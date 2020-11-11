@@ -1,6 +1,9 @@
 from configparser import ConfigParser
 from amieclient import AMIEClient
 
+# NOTE: functionality that is required to be implemented by Service Providers 
+# are marked with comments that begin with the prefix SP:
+
 # For more information on the configparser library, please see the python docs:
 # https://docs.python.org/3.5/library/configparser.html
 config = ConfigParser()
@@ -54,16 +57,19 @@ for packet in packets:
     pi_requested_logins = packet.PiRequestedLoginList
     pi_dn_list          = packet.PiDnList
 
-    # add code to find the PI from the local database (or create the person in the local database)
-    # and set pi_person_id, pi_login
-    # add code to create the project for the grant_number (if project doesn't exist), or apply the action specified by allocation_type
-    # set the project_id to the local id for the project (if it isn't already set from the RPC)
+    # SP: 
+    # - add code to find the PI from the local database (or create the person in the local database)
+    #   and set pi_person_id, pi_login
+    # - add code to create the project for the grant_number (if project doesn't exist), or apply the action specified by allocation_type
+    # - set the project_id to the local id for the project (if it isn't already set from the RPC)
+    # - set the project state to active (if it is inactive), as the XDCDB will not send RPCs for inactive projects
+    #
     # NOTE: if the record_id is not null, you should track it (associate it with the packet_rec_id).
     # If a second RPC gets sent with the same record_id, the second RPC should not be processed,
     # but the data from the first RPC sent in the reply NPC
 
     # construct a NotifyProjectCreate(NPC) packet.
-    npc = packet.reply_to()
+    npc = packet.reply_packet()
     npc.ProjectID = project_id           # local project ID
     npc.PiRemoteSiteLogin = pi_login     # local login for the PI on the resource
     npc.PiPersonID = pi_person_id        # local person ID for the pi
@@ -82,7 +88,7 @@ for packet in packets:
     # NOTE: a DPC does *not* have the resource. You have to get the resource from the RPC for the trans_rec_id
 
     # construct the InformTransactionComplete(ITC) success packet
-    itc = packet.reply_to()
+    itc = packet.reply_packet()
     itc.StatusCode = 'Success'
     itc.DetailCode = '1'
     itc.Message = 'OK'
@@ -115,12 +121,12 @@ for packet in packets:
     user_requested_logins = packet.UserRequestedLoginList
     user_dn_list          = packet.UserDnList
 
-    # add code to find the User from the local database (or create the person in the local database)
+    # SP: add code to find the User from the local database (or create the person in the local database)
     # then add an account for the User on the specified project (project_id) on the resource
     # RACs are also used to reactivate accounts, so if the account already exists, just set it active
 
     # construct a NotifyAccountCreate(NAC) packet.
-    nac = packet.reply_to()
+    nac = packet.reply_packet()
     nac.ProjectID = project_id               # local project ID
     nac.UserRemoteSiteLogin = user_login     # local login for the User on the resource
     nac.UserPersonID = user_person_id        # local person ID for the User
@@ -139,7 +145,7 @@ for packet in packets:
     # NOTE: a DAC does *not* have the resource. You have to get the resource from the RAC for the trans_rec_id
 
     # construct the InformTransactionComplete(ITC) success packet
-    itc = packet.reply_to()
+    itc = packet.reply_packet()
     itc.StatusCode = 'Success'
     itc.DetailCode = '1'
     itc.Message = 'OK'
@@ -151,7 +157,7 @@ for packet in packets:
     person_id = packet.person_id
     if packet.Actiontype == 'delete':
       inactive_dn_list = packet.DnList
-      # inactivate the specified DNs for the user
+      # SP: inactivate the specified DNs for the user
     else:
       active_dn_list       = packet.DnList
       first_name           = packet.FirstName
@@ -173,10 +179,10 @@ for packet in packets:
       country              = packet.Country
       nsf_status_code      = packet.NsfStatusCode
 
-      # update the User info and DNs
+      # SP: update the User info and DNs
 
     # construct the InformTransactionComplete(ITC) success packet
-    itc = packet.reply_to()
+    itc = packet.reply_packet()
     itc.StatusCode = 'Success'
     itc.DetailCode = '1'
     itc.Message = 'OK'
@@ -188,10 +194,10 @@ for packet in packets:
     keep_person_id   = packet.KeepPersonID
     delete_person_id = packet.DeletePersonID
 
-    # merge delete_person_id into keep_person_id and remove delete_person_id from local accounting system
+    # SP: merge delete_person_id into keep_person_id and remove delete_person_id from local accounting system
 
     # construct the InformTransactionComplete(ITC) success packet
-    itc = packet.reply_to()
+    itc = packet.reply_packet()
     itc.StatusCode = 'Success'
     itc.DetailCode = '1'
     itc.Message = 'OK'
@@ -205,9 +211,9 @@ for packet in packets:
     resource = packet.ResourceList[0]
     project_id = packet.ProjectID
 
-    # inactivate the project and all accounts on the project
+    # SP: inactivate the project and all accounts on the project
 
-    npi = packet.reply_to()
+    npi = packet.reply_packet()
     amie_client.send_packet(npi)
 
   if packet_type == 'request_account_inactivate':
@@ -215,9 +221,9 @@ for packet in packets:
     project_id = packet.ProjectID
     person_id = packet.PersonID
 
-    # inactivate the account on the project
+    # SP:  inactivate the account on the project
 
-    nai = packet.reply_to()
+    nai = packet.reply_packet()
     amie_client.send_packet(nai)
 
   if packet_type == 'request_project_reactivate':
@@ -225,8 +231,8 @@ for packet in packets:
     project_id = packet.ProjectID
     pi_person_id = packet.PersonID
 
-    # reactivate the project and the PI account on the project (but no other accounts)
+    # SP: reactivate the project and the PI account on the project (but no other accounts)
 
-    npr = packet.reply_to()
+    npr = packet.reply_packet()
     amie_client.send_packet(npr)
 
