@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Usage API &#8212; amieclient  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="amieclient API" href="client.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="usage-api">
+<h1>Usage API<a class="headerlink" href="#usage-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-usage-api-client">
+<h2>The Usage API client<a class="headerlink" href="#the-usage-api-client" title="Permalink to this headline">¶</a></h2>
+<p>To communicate with the AMIE REST Usage API, create a UsageClient object.
+You’ll need to provide your site name and your API key.</p>
+</div>
+<div class="section" id="usage-records">
+<h2>Usage Records<a class="headerlink" href="#usage-records" title="Permalink to this headline">¶</a></h2>
+<p>The Usage API currently handles three kinds of resources:
+Compute, Storage, and Adjustment. Each resource has a corresponding
+Record type.</p>
+<div class="section" id="compute">
+<h3>Compute<a class="headerlink" href="#compute" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="storage">
+<h3>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="adjustment">
+<h3>Adjustment<a class="headerlink" href="#adjustment" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="usage-messages">
+<h2>Usage Messages<a class="headerlink" href="#usage-messages" title="Permalink to this headline">¶</a></h2>
+<p>Usage Records are sent and received from the Usage API in the form of Usage Messages.
+A Usage Message is, essentially, a list of one particular type of Usage Record – so, for
+example, you cannot send a UsageMessage with a record of both Compute and Storage usage.
+The send_usage() method of the Usage Client will make a UsageMessage for you automatically
+if you give it a list of UsageRecords of the same kind, or if you give it a single
+UsageRecord.</p>
+</div>
+<div class="section" id="responses">
+<h2>Responses<a class="headerlink" href="#responses" title="Permalink to this headline">¶</a></h2>
+<p>The Usage API backend processes received records asynchronously. This means that when you
+send along a UsageRecord, your data is validated, but not processed immediately. You will
+receive a quick response from the API, letting you know how many records were validated
+successfully and put on the stack to be processed. Any records that fail validation will be
+returned to you, so that you can correct whatever horrible mistake you have inflicted on the API.
+You monster.</p>
+</div>
+<div class="section" id="checking-status">
+<h2>Checking status<a class="headerlink" href="#checking-status" title="Permalink to this headline">¶</a></h2>
+<p>To see what the current status of your submitted records are, there is the usage_status()
+method. It takes two optional paramters – from_date and to_date – that define a date and
+time range. The response includes a list of resources. For each resource, the number of
+successful and failed records is sent. If there are any records that failed processing,
+they are sent as well, grouped by the error that occured.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">amieclient</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="client.html">amieclient API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-usage-api-client">The Usage API client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-records">Usage Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-messages">Usage Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#responses">Responses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checking-status">Checking status</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="client.html" title="previous chapter">amieclient API</a></li>
+      <li>Next: <a href="examples.html" title="next chapter">Examples</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;XSEDE.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
