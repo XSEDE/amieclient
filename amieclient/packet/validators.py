@@ -1,0 +1,18 @@
+"""
+Validation functions that are useful in more than one packet type,
+but not every packet type.
+"""
+
+from .base import PacketInvalidData
+
+
+def _validate_resource_list(pkt):
+    """
+    ResourceLists must only have one element in them.
+    A bit weird, yes, but that's the spec.
+    """
+    rlist = pkt._required_data.get('ResourceList', [])
+    if len(rlist) != 1:
+        raise PacketInvalidData("ResourceList must have exactly one element")
+
+    return True
