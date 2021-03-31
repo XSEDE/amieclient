@@ -84,6 +84,20 @@ class NotifyAccountInactivate(Packet):
     _data_keys_not_required_in_reply = ['PersonID', 'ProjectID', 'ResourceList']
     _data_keys_allowed = ['Comment']
 
+    def validate_data(self, raise_on_invalid=False):
+        """
+        Validates that there is only one element in the ResourceList attribute
+        """
+        try:
+            _validate_resource_list(self)
+
+        except PacketInvalidData as e:
+            if raise_on_invalid:
+                raise e
+            else:
+                return False
+        return super().validate_data(raise_on_invalid)
+
 
 class NotifyAccountReactivate(Packet):
     _packet_type = 'notify_account_reactivate'
