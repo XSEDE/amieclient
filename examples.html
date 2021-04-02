@@ -61,12 +61,12 @@
 
 <span class="c1"># Once that&#39;s done, send a NotifyProjectCreate packet.</span>
 <span class="c1"># If nothing needs to be changed from the RequestProjectCreate packet,</span>
-<span class="c1"># you can use the packet&#39;s reply_to() method. This will create a packet that</span>
+<span class="c1"># you can use the packet&#39;s reply_packet() method. This will create a packet that</span>
 <span class="c1"># automatically has the proper type and a reference to the preceeding packet.</span>
 <span class="c1"># The AMIE service will extrapolate the needed information from the</span>
 <span class="c1"># RequestProjectCreate packet.</span>
 
-<span class="n">project_created</span> <span class="o">=</span> <span class="n">project_creation_request</span><span class="o">.</span><span class="n">reply_to</span><span class="p">()</span>
+<span class="n">project_created</span> <span class="o">=</span> <span class="n">project_creation_request</span><span class="o">.</span><span class="n">reply_packet</span><span class="p">()</span>
 
 <span class="n">psc_client</span><span class="o">.</span><span class="n">send_packet</span><span class="p">(</span><span class="n">project_created</span><span class="p">)</span>
 
@@ -76,7 +76,7 @@
     <span class="n">transaction</span> <span class="o">=</span> <span class="n">client_too</span><span class="o">.</span><span class="n">get_transaction</span><span class="p">(</span><span class="n">transaction_id</span><span class="o">=</span><span class="s1">&#39;12345&#39;</span><span class="p">)</span>
     <span class="n">project_creation_request</span> <span class="o">=</span> <span class="n">transaction</span><span class="o">.</span><span class="n">packets</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="c1"># Do something...</span>
-    <span class="n">project_created</span> <span class="o">=</span> <span class="n">project_creation_request</span><span class="o">.</span><span class="n">reply_to</span><span class="p">()</span>
+    <span class="n">project_created</span> <span class="o">=</span> <span class="n">project_creation_request</span><span class="o">.</span><span class="n">reply_packet</span><span class="p">()</span>
     <span class="n">client_too</span><span class="o">.</span><span class="n">send_packet</span><span class="p">(</span><span class="n">project_created</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -103,7 +103,7 @@
 <span class="n">rpc</span><span class="o">.</span><span class="n">PiOrgCode</span> <span class="o">=</span> <span class="s1">&#39;12345&#39;</span>
 <span class="n">rpc</span><span class="o">.</span><span class="n">EndDate</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 <span class="n">rpc</span><span class="o">.</span><span class="n">StartDate</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-<span class="n">rpc</span><span class="o">.</span><span class="n">ResourceList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IDK, somthing pretty fast&#39;</span><span class="p">,</span> <span class="s1">&#39;maybe with a gpu in it&#39;</span><span class="p">]</span>
+<span class="n">rpc</span><span class="o">.</span><span class="n">ResourceList</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IDK, somthing pretty fast&#39;</span><span class="p">]</span>
 <span class="n">rpc</span><span class="o">.</span><span class="n">ServiceUnitsAllocated</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span>
 
 <span class="c1"># Send the packet</span>
@@ -250,7 +250,7 @@
       &copy;XSEDE.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
