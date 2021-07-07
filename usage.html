@@ -4,11 +4,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Usage API &#8212; amieclient  documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
@@ -32,15 +33,15 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="usage-api">
+  <section id="usage-api">
 <h1>Usage API<a class="headerlink" href="#usage-api" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="the-usage-api-client">
+<section id="the-usage-api-client">
 <h2>The Usage API client<a class="headerlink" href="#the-usage-api-client" title="Permalink to this headline">¶</a></h2>
 <p>To communicate with the AMIE REST Usage API, create a UsageClient object.
 You’ll need to provide your site name and your API key.</p>
 <dl class="py class">
-<dt id="amieclient.client.UsageClient">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">amieclient.client.</span></code><code class="sig-name descname"><span class="pre">UsageClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">site_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usage_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://usage.xsede.org/api/v1'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.client.UsageClient">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">amieclient.client.</span></span><span class="sig-name descname"><span class="pre">UsageClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">site_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usage_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://usage.xsede.org/api/v1'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>AMIE Usage Client.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -61,8 +62,8 @@ doing local development or testing out a new version.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt id="amieclient.client.UsageClient.clear_failed_records">
-<code class="sig-name descname"><span class="pre">clear_failed_records</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">failed_records_or_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient.clear_failed_records" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.client.UsageClient.clear_failed_records">
+<span class="sig-name descname"><span class="pre">clear_failed_records</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">failed_records_or_ids</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient.clear_failed_records" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tells the server to clear the failed records given</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -73,15 +74,15 @@ failed</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="amieclient.client.UsageClient.get_failed_records">
-<code class="sig-name descname"><span class="pre">get_failed_records</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient.get_failed_records" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.client.UsageClient.get_failed_records">
+<span class="sig-name descname"><span class="pre">get_failed_records</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient.get_failed_records" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all failed records</p>
 <p>Takes no arguments</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="amieclient.client.UsageClient.send">
-<code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">usage_packets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient.send" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.client.UsageClient.send">
+<span class="sig-name descname"><span class="pre">send</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">usage_packets</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient.send" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sends a usage update to the Usage API host. This function accepts
 individual UsageMessages, lists of UsageRecords, or even a single
 UsageRecord. Returns a list of UsageResponses</p>
@@ -104,8 +105,8 @@ UsageRecord to send.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="amieclient.client.UsageClient.status">
-<code class="sig-name descname"><span class="pre">status</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient.status" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.client.UsageClient.status">
+<span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient.status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets the status of records processed from the queue in the provided interval.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -118,50 +119,50 @@ UsageRecord to send.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="amieclient.client.UsageClient.summary">
-<code class="sig-name descname"><span class="pre">summary</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient.summary" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.client.UsageClient.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.client.UsageClient.summary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a usage summary</p>
 <p>Not implemented yet</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="usage-records">
+</section>
+<section id="usage-records">
 <h2>Usage Records<a class="headerlink" href="#usage-records" title="Permalink to this headline">¶</a></h2>
 <p>The Usage API currently handles three kinds of resources:
 Compute, Storage, and Adjustment. Each resource has a corresponding
 Record type.</p>
-<div class="section" id="compute">
+<section id="compute">
 <h3>Compute<a class="headerlink" href="#compute" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
-<dt id="amieclient.usage.record.ComputeUsageRecord">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">amieclient.usage.record.</span></code><code class="sig-name descname"><span class="pre">ComputeUsageRecord</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_record_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpu_core_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">submit_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.record.ComputeUsageRecord" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.record.ComputeUsageRecord">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">amieclient.usage.record.</span></span><span class="sig-name descname"><span class="pre">ComputeUsageRecord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_record_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpu_core_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">submit_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.record.ComputeUsageRecord" title="Permalink to this definition">¶</a></dt>
 <dd><p>A ComputeUsageRecord. A Record of Compute Usage.</p>
 <p>(TODO: a better description)</p>
 <dl class="py method">
-<dt id="amieclient.usage.record.ComputeUsageRecord.as_dict">
-<code class="sig-name descname"><span class="pre">as_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.record.ComputeUsageRecord.as_dict" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.record.ComputeUsageRecord.as_dict">
+<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.record.ComputeUsageRecord.as_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary version of this record</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="amieclient.usage.record.ComputeUsageRecord.from_dict">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.record.ComputeUsageRecord.from_dict" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.record.ComputeUsageRecord.from_dict">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.record.ComputeUsageRecord.from_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a ComputeUsageRecord from a provided dictionary</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="storage">
+</section>
+<section id="storage">
 <h3>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
-<dt id="amieclient.usage.record.StorageUsageRecord">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">amieclient.usage.record.</span></code><code class="sig-name descname"><span class="pre">StorageUsageRecord</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytes_read</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytes_stored</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytes_written</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files_read</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files_written</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">media_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_copies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_copies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.record.StorageUsageRecord" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.record.StorageUsageRecord">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">amieclient.usage.record.</span></span><span class="sig-name descname"><span class="pre">StorageUsageRecord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytes_read</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytes_stored</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bytes_written</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files_read</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files_written</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">media_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system_copies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_copies</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.record.StorageUsageRecord" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py attribute">
-<dt id="amieclient.usage.record.StorageUsageRecord.record_type">
-<code class="sig-name descname"><span class="pre">record_type</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'storage'</span></em><a class="headerlink" href="#amieclient.usage.record.StorageUsageRecord.record_type" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.record.StorageUsageRecord.record_type">
+<span class="sig-name descname"><span class="pre">record_type</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'storage'</span></em><a class="headerlink" href="#amieclient.usage.record.StorageUsageRecord.record_type" title="Permalink to this definition">¶</a></dt>
 <dd><p>A usage record for storage usage.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -204,12 +205,12 @@ to keep</p></li>
 
 </dd></dl>
 
-</div>
-<div class="section" id="adjustment">
+</section>
+<section id="adjustment">
 <h3>Adjustment<a class="headerlink" href="#adjustment" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
-<dt id="amieclient.usage.record.AdjustmentUsageRecord">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">amieclient.usage.record.</span></code><code class="sig-name descname"><span class="pre">AdjustmentUsageRecord</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjustment_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.record.AdjustmentUsageRecord" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.record.AdjustmentUsageRecord">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">amieclient.usage.record.</span></span><span class="sig-name descname"><span class="pre">AdjustmentUsageRecord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adjustment_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_project_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_record_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_reference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.record.AdjustmentUsageRecord" title="Permalink to this definition">¶</a></dt>
 <dd><p>Usage record for an Adjustment
 :param adjustment_type: Which type of allocation adjustment is this?</p>
 <blockquote>
@@ -249,9 +250,9 @@ match the username used in AMIE</p></li>
 </dl>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="usage-messages">
+</section>
+</section>
+<section id="usage-messages">
 <h2>Usage Messages<a class="headerlink" href="#usage-messages" title="Permalink to this headline">¶</a></h2>
 <p>Usage Records are sent and received from the Usage API in the form of Usage Messages.
 A Usage Message is, essentially, a list of one particular type of Usage Record – so, for
@@ -260,36 +261,36 @@ The send_usage() method of the Usage Client will make a UsageMessage for you aut
 if you give it a list of UsageRecords of the same kind, or if you give it a single
 UsageRecord.</p>
 <dl class="py class">
-<dt id="amieclient.usage.message.UsageMessage">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">amieclient.usage.message.</span></code><code class="sig-name descname"><span class="pre">UsageMessage</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">records</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.message.UsageMessage" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.message.UsageMessage">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">amieclient.usage.message.</span></span><span class="sig-name descname"><span class="pre">UsageMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">records</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.message.UsageMessage" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
-<dt id="amieclient.usage.message.UsageMessage.as_dict">
-<code class="sig-name descname"><span class="pre">as_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.message.UsageMessage.as_dict" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.message.UsageMessage.as_dict">
+<span class="sig-name descname"><span class="pre">as_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.message.UsageMessage.as_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary version of this record</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="amieclient.usage.message.UsageMessage.from_dict">
-<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">from_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.message.UsageMessage.from_dict" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.message.UsageMessage.from_dict">
+<em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.message.UsageMessage.from_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a UsageMessage from a provided dictionary</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="amieclient.usage.message.UsageMessage.json">
-<code class="sig-name descname"><span class="pre">json</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">json_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.message.UsageMessage.json" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.message.UsageMessage.json">
+<span class="sig-name descname"><span class="pre">json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">json_kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.message.UsageMessage.json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a json version of this message</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="amieclient.usage.message.UsageMessage.pretty_print">
-<code class="sig-name descname"><span class="pre">pretty_print</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.message.UsageMessage.pretty_print" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.message.UsageMessage.pretty_print">
+<span class="sig-name descname"><span class="pre">pretty_print</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.message.UsageMessage.pretty_print" title="Permalink to this definition">¶</a></dt>
 <dd><p>prints() a pretty version of the JSON of this packet</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="responses">
+</section>
+<section id="responses">
 <h2>Responses<a class="headerlink" href="#responses" title="Permalink to this headline">¶</a></h2>
 <p>The Usage API backend processes received records asynchronously. This means that when you
 send along a UsageRecord, your data is validated, but not processed immediately. You will
@@ -298,18 +299,18 @@ successfully and put on the stack to be processed. Any records that fail validat
 returned to you, so that you can correct whatever horrible mistake you have inflicted on the API.
 You monster.</p>
 <dl class="py class">
-<dt id="amieclient.usage.response.UsageResponse">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">amieclient.usage.response.</span></code><code class="sig-name descname"><span class="pre">UsageResponse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">failed_records</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageResponse" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.response.UsageResponse">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">amieclient.usage.response.</span></span><span class="sig-name descname"><span class="pre">UsageResponse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">failed_records</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageResponse" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
-<dt id="amieclient.usage.response.UsageResponse.pretty_print">
-<code class="sig-name descname"><span class="pre">pretty_print</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageResponse.pretty_print" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.response.UsageResponse.pretty_print">
+<span class="sig-name descname"><span class="pre">pretty_print</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageResponse.pretty_print" title="Permalink to this definition">¶</a></dt>
 <dd><p>prints() a pretty version of the JSON of this packet</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-<div class="section" id="checking-status">
+</section>
+<section id="checking-status">
 <h2>Checking status<a class="headerlink" href="#checking-status" title="Permalink to this headline">¶</a></h2>
 <p>To see what the current status of your submitted records are, there is the usage_status()
 method. It takes two optional paramters – from_date and to_date – that define a date and
@@ -317,29 +318,29 @@ time range. The response includes a list of resources. For each resource, the nu
 successful and failed records is sent. If there are any records that failed processing,
 they are sent as well, grouped by the error that occured.</p>
 <dl class="py class">
-<dt id="amieclient.usage.response.UsageStatus">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">amieclient.usage.response.</span></code><code class="sig-name descname"><span class="pre">UsageStatus</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resources</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageStatus" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.response.UsageStatus">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">amieclient.usage.response.</span></span><span class="sig-name descname"><span class="pre">UsageStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resources</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageStatus" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
-<dt id="amieclient.usage.response.UsageStatus.pretty_print">
-<code class="sig-name descname"><span class="pre">pretty_print</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageStatus.pretty_print" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.response.UsageStatus.pretty_print">
+<span class="sig-name descname"><span class="pre">pretty_print</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageStatus.pretty_print" title="Permalink to this definition">¶</a></dt>
 <dd><p>prints() a pretty version of the JSON of this packet</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="amieclient.usage.response.UsageStatusResource">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">amieclient.usage.response.</span></code><code class="sig-name descname"><span class="pre">UsageStatusResource</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loaded_record_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">failed_job_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageStatusResource" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.response.UsageStatusResource">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">amieclient.usage.response.</span></span><span class="sig-name descname"><span class="pre">UsageStatusResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loaded_record_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">failed_job_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_charge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageStatusResource" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
-<dt id="amieclient.usage.response.UsageStatusResource.pretty_print">
-<code class="sig-name descname"><span class="pre">pretty_print</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageStatusResource.pretty_print" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="amieclient.usage.response.UsageStatusResource.pretty_print">
+<span class="sig-name descname"><span class="pre">pretty_print</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#amieclient.usage.response.UsageStatusResource.pretty_print" title="Permalink to this definition">¶</a></dt>
 <dd><p>prints() a pretty version of the JSON of this packet</p>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -407,7 +408,7 @@ they are sent as well, grouped by the error that occured.</p>
       &copy;XSEDE.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
