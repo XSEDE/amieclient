@@ -335,7 +335,7 @@ class Packet(object, metaclass=MetaPacket):
             'packet_state': self.packet_state,
             'packet_timestamp': self.packet_timestamp,
         }
-        if self.date is not None:
+        if hasattr(self, 'date') and self.date is not None:
             header['date'] = self.date.isoformat()
         if self.in_reply_to_id:
             header['in_reply_to'] = self.in_reply_to_id
