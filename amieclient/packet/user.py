@@ -6,7 +6,7 @@ from .base import Packet, PacketInvalidData
 
 
 class NotifyUserModify(Packet):
-    _packet_type = 'notify_account_inactivate'
+    _packet_type = 'notify_user_modify'
     _expected_reply = [{'type': 'inform_transaction_complete', 'timeout': 30240}]
     _data_keys_required = [
         'ActionType',
