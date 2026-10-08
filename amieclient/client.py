@@ -8,7 +8,7 @@ from .packet import PacketList
 from .packet.base import Packet
 from .transaction import Transaction
 from .usage import (UsageMessage, UsageRecord, UsageResponse, UsageResponseError,
-                    FailedUsageResponse, UsageStatus)
+                    FailedUsageResponse, UsageStatus, UsageLoaded)
 
 
 """AMIE client and Usage Client classes"""
@@ -336,7 +336,7 @@ class UsageClient:
     Args:
         site_name (str): Name of the client site.
         api_key (str): API key secret
-        usage_url (str): Base URL for the XSEDE Usage api
+        usage_url (str): Base URL for the ACCESS Usage api
 
     Examples:
         >>> psc_client = amieclient.UsageClient(site_name='PSC', api_key=some_secrets_store['amie_api_key'])
@@ -347,8 +347,11 @@ class UsageClient:
         >>> psc_alt_base_client = amieclient.UsageClient(site_name='PSC', api_key='test_api_key', usage_url='https://amieclient.xsede.org/v0.20_beta/)
 
     """
+    # The Usage API User's Guide limits a POST to 256 KB; stay well under it.
+    MAX_POST_BYTES = 196608
+
     def __init__(self, site_name, api_key,
-                 usage_url='https://usage.xsede.org/api/v1'):
+                 usage_url='https://usage.access-ci.org/api/v1'):
 
         if not usage_url.endswith('/'):
             self.usage_url = usage_url + '/'
@@ -377,13 +380,13 @@ class UsageClient:
         individual UsageMessages, lists of UsageRecords, or even a single
         UsageRecord. Returns a list of UsageResponses
 
-        The API currently has a request size limit of 1024KiB. We get
-        ample room for overhead that may be added by intermediate layers
-        (reverse proxies, etc) by capping the size of the request we send
-        to 768KiB. This happens automatically, no need to chunk your usage
-        packets yourself. But this potential chunking means that we may get
-        more than one response, so for the sake of consistency this method
-        will return a list of responses.
+        The Usage API User's Guide limits a POST to 256 KB. We leave room
+        for overhead that may be added by intermediate layers (reverse
+        proxies, etc) by capping the size of the request we send to 192KiB.
+        This happens automatically, no need to chunk your usage packets
+        yourself. But this potential chunking means that we may get more
+        than one response, so for the sake of consistency this method will
+        return a list of responses.
 
         Args:
             usage_packets (UsageMessage, [UsageRecord], UsageRecord):
@@ -406,16 +409,17 @@ class UsageClient:
         # Get the size of the content
         content_length = int(prepped_req.headers.get('Content-Length'))
 
-        # Cap content_length at 786432 bytes
-        if content_length >= 786432:
+        # Cap content_length at MAX_POST_BYTES. A single record can't be
+        # split any further, so send it as-is.
+        if content_length >= self.MAX_POST_BYTES and len(pkt_list.records) > 1:
             # Get the safe number of safe chunks:
-            number_of_chunks = ceil(content_length / 786432)
+            number_of_chunks = ceil(content_length / self.MAX_POST_BYTES)
             # Get the size of those chunks
-            chunk_size = floor(len(pkt_list) / number_of_chunks)
+            chunk_size = max(1, floor(len(pkt_list.records) / number_of_chunks))
             results = list()
             for chunk in pkt_list._chunked(chunk_size=chunk_size):
                 # Send each chunk
-                r = self.send_usage(chunk)
+                r = self.send(chunk)
                 results.extend(r)
             return results
 
@@ -504,3 +508,36 @@ class UsageClient:
             msg = r.json().get('error', 'Bad Request, but error not specified by server')
             raise UsageResponseError(msg)
         return UsageStatus.from_list(r.json())
+
+    def loaded(self, min_loaded_time=None, limit=None, offset=None,
+               local_record_id=None):
+        """
+        Gets records that have been successfully loaded into the accounting
+        database. The API returns at most 25,000 records per request, ordered
+        by load time; use offset to page through more. The API currently
+        only reports Compute usage.
+
+        Args:
+            min_loaded_time (Datetime or str): Earliest load time of the
+                records returned. The API defaults to one day ago.
+            limit (int): Maximum number of records to return
+            offset (int): Number of records to skip, for paging
+            local_record_id (str): Return only this record. The API ignores
+                the other parameters when this is set.
+        """
+        if min_loaded_time is not None and hasattr(min_loaded_time, 'isoformat'):
+            min_loaded_time = min_loaded_time.isoformat()
+        p = {
+            'MinLoadedTime': min_loaded_time,
+            'Limit': limit,
+            'Offset': offset,
+            'LocalRecordID': local_record_id,
+        }
+
+        url = self.usage_url + 'usage/loaded'
+        r = self._session.get(url, params=p)
+        if r.status_code > 200:
+            # Get the message if we're given one; otherwise
+            msg = r.json().get('error', 'Bad Request, but error not specified by server')
+            raise UsageResponseError(msg)
+        return UsageLoaded.from_dict(r.json())
